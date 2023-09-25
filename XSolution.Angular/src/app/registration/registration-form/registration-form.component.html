@@ -1,0 +1,124 @@
+<!-- Loader -->
+<div id="loader">
+  <mat-progress-bar
+    *ngIf="isLoading"
+    class="example-margin"
+    [color]="color"
+    [mode]="mode"
+    [value]="value"
+    [bufferValue]="bufferValue">
+  </mat-progress-bar>
+</div>
+  <!-- First -->
+  <mat-stepper orientation="horizontal" [linear]="isLinear" #stepper>
+    <mat-step [stepControl]="firstFormGroup">
+      <form class="formBlock" [formGroup]="firstFormGroup">
+        <ng-template matStepLabel>Step 1</ng-template>
+        <div>
+            <mat-form-field>
+            <mat-label>Login</mat-label>
+            <input matInput placeholder="Please enter your email" formControlName="loginCtrl" required>
+            <mat-error *ngIf="firstFormGroup.get('loginCtrl').invalid">
+              Login must be a valid email
+              </mat-error>
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field>
+            <mat-label>Password</mat-label>
+            <input type="password" matInput placeholder="Please enter your email" formControlName="passwordCtrl" required>
+            <mat-error *ngIf="firstFormGroup.get('passwordCtrl').invalid">
+              Password must contain min 1 digit and min 1 letter
+            </mat-error>
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field>
+            <mat-label>Confirm password</mat-label>
+            <input type="password" (change)="confirmPasswordChanged()" matInput placeholder="Please enter your email" formControlName="passwordConfirmCtrl" required>
+            <mat-error *ngIf="firstFormGroup.get('passwordConfirmCtrl').invalid">
+              Confirm password must be the same with password
+            </mat-error>  
+          </mat-form-field>
+        </div>
+        
+        <div>
+            <mat-form-field>
+                <input hidden=true matInput>
+                <mat-checkbox 
+                  matInput 
+                  formControlName="agreeCheckBoxCtrl"
+                  [ngClass]="{'errorBackGround': firstFormGroup.get('agreeCheckBoxCtrl').invalid && firstFormGroup.get('agreeCheckBoxCtrl').touched}"
+                  >Agree to work for food</mat-checkbox>
+              </mat-form-field>
+        </div>
+        <div>
+            <button 
+              mat-button 
+              matStepperNext
+              (click)="clickOnGoToStep2()"
+              >
+              Go to step 2
+            </button>
+        </div>
+      </form>
+    </mat-step>
+    <!-- Second -->
+    <mat-step [stepControl]="secondFormGroup">
+      <form class="formBlock" [formGroup]="secondFormGroup">
+        <ng-template matStepLabel>Step 2</ng-template>
+         <!-- Country -->
+        <mat-form-field>
+          <mat-label>Country</mat-label>
+          <mat-select 
+            formControlName="countryDDCtrl"
+            (selectionChange)="OnCountryDropDownChanged($event)"
+            >
+            <mat-option *ngFor="let country of countries" [value]="country.key">
+              {{country.value}}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="secondFormGroup.get('countryDDCtrl').invalid">
+            Country is a required field
+          </mat-error>
+          <mat-hint
+          *ngIf="!secondFormGroup.get('countryDDCtrl').touched"
+          >Select country</mat-hint>
+        </mat-form-field>
+        <!-- Province -->
+        <mat-form-field>
+          <mat-label>Province</mat-label>
+          <mat-select 
+            formControlName="provinceDDCtrl"
+            [disabled]=true
+            >
+            <mat-option *ngFor="let province of provinces" [value]="province.key">
+              {{province.value}}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="secondFormGroup.get('provinceDDCtrl').invalid">
+            Province is a required field
+          </mat-error>
+          <mat-hint
+          *ngIf="!secondFormGroup.get('provinceDDCtrl').touched"c
+          >Select province</mat-hint>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Save</ng-template>
+      <p>The form is completed successfully</p>
+      <div>
+        <button 
+          mat-button 
+          [disabled] ="isUserSuccessfulyAdded"
+          id="saveButton"
+          (click)="onSaveButtonClick()">
+          Save
+        </button>
+      </div>
+    </mat-step>
+  </mat-stepper>

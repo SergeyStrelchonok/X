@@ -1,0 +1,64 @@
+.mat-stepper-vertical {
+    margin-top: 8px;
+  }
+
+  .mat-stepper-horizontal {
+    display: block; margin: 100px auto;
+
+
+    /* margin: 0;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%); */
+  }
+  
+  .mat-mdc-form-field {
+    display: block; margin: 0 auto;
+    width: 400px;
+  }
+
+  .mat-stepper-horizontal {
+    width: 800px;
+  }
+
+  #saveButton {
+    background-color: #e2e2e27c;
+    margin-top: 10px;
+  }
+
+  .mat-stepper-next {
+    display: block; margin: 0 auto;
+    background-color: #e2e2e27c;
+  }
+
+  .ng-star-inserted {
+    display: block; margin: 0 auto;
+  }
+
+  .formBlock {
+    margin-top: 10%;
+  }
+
+
+/* 
+  .mdc-button__label {
+    color: white;
+  } */
+
+  /* .mdc-filled-text-field-error-active-indicator-color */
+
+  /* .example-margin {
+    margin: 0 10px;
+  }
+   */
+
+   #loader {
+    min-height: 4px;;
+   }
+
+   .errorBackGround {
+    background-color: rgba(253, 103, 103, 0.363);
+   }
+  
