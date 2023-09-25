@@ -4,5 +4,6 @@ Hi. For the start project we need to do some settings:
 2. Set up a database connection in appsettings.json
    ![image](https://github.com/SergeyStrelchonok/X/assets/145483478/71bcb1f1-5525-4ec2-9a03-1e07f62c09a9)
 3. Update database from XSolution.API project folder => dotnet ef database update
+   ![image](https://github.com/SergeyStrelchonok/X/assets/145483478/e956fbeb-cd9a-4676-848c-e5fb4d196e13)
 4. Ctrl+F5 
 
